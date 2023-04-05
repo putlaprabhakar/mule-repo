@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 trigger:
   batch: true
   branches:
@@ -37,10 +38,25 @@ steps:
       New-Item -Type Directory -Force "${HOME}/.m2"
       Copy-Item -Force "$(settingsxml.secureFilePath)" "${HOME}/.m2/settings.xml"
       
+=======
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+>>>>>>> 9633b4b19b7bb8a79c932c1f758040e80af6ad68
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
+<<<<<<< HEAD
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     mavenAuthenticateFeed: true
@@ -50,3 +66,11 @@ steps:
     effectivePomSkip: true
     sonarQubeRunAnalysis: false
     goals: 'clean install package deploy $(MAVEN_OPTS)  -DmuleDeploy -Dserver=$(server) -Denvironment=$(environment) -Dworker=$(worker) -DworkerType=$(workerType) -Dapp.runtime=$(app.runtime) -Dapp.name=$(app.name)'
+=======
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
+>>>>>>> 9633b4b19b7bb8a79c932c1f758040e80af6ad68
