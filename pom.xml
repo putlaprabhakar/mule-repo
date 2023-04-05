@@ -29,6 +29,18 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 			</plugin>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<standaloneDeployment>
+						<muleVersion>${mule.version}</muleVersion>
+						<muleHome>${mule.home}</muleHome>
+					</standaloneDeployment>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
